@@ -1,17 +1,36 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Geist } from "next/font/google"
+import { Inter, Space_Grotesk, JetBrains_Mono } from "next/font/google"
 import { SubscriptionProvider } from "@/contexts/subscription-context"
 import { AuthProvider } from "@/contexts/auth-context"
 import { Footer } from "@/components/footer"
 import { Toaster } from "sonner"
 import "./globals.css"
 
-const geist = Geist({ subsets: ["latin"] })
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+  preload: true,
+})
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-space-grotesk",
+  display: "swap",
+  preload: true,
+})
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-jetbrains",
+  display: "swap",
+  preload: true,
+})
 
 export const metadata: Metadata = {
-  title: "8x Hiring Template",
-  description: "A SaaS starter template for frontend engineering assessments.",
+  title: "Go Viral: AI Creator Assistant",
+  description: "Upload your content and receive an AI virality score with actionable feedback.",
   icons: {
     icon: [
       { url: "/favicon-32x32.png" },
@@ -27,8 +46,8 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
-      <body className={`${geist.className} antialiased flex flex-col min-h-screen`}>
+    <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable}`}>
+      <body className={`${inter.className} antialiased flex flex-col min-h-screen`}>
         <AuthProvider>
           <SubscriptionProvider>
             <div className="flex-1 flex flex-col">
